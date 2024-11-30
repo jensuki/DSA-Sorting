@@ -28,10 +28,19 @@ quickSort accepts an array, left index, and right index
 */
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
-    // base case: left subarray has more than 2 elements and needs to be partitioned
+    // base case: proceed to split only if current subarray has at least 2 elements
     if (left < right) {
-        // split it
+        // partition the array and get pivot index
+        let pivotIndex = pivot(arr, left, right);
+
+        // recursively sort left part of array
+        quickSort(arr, left, pivotIndex - 1);
+
+        // recursively sort right part of array
+        quickSort(arr, pivotIndex + 1, right);
+
     }
+    return arr;
 }
 
 module.exports = quickSort;
